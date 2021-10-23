@@ -1,0 +1,15 @@
+<h1>Signup</h1>
+<form action="{{ route('UsersController.createUser') }}" method="POST">
+  <label>Your Name: <input type="text" name="name" required="true" /></label><br>
+  <label>Your Email: <input type="email" name="email" required="true" /></label><br>
+  <label>Your Password: <input type="password" name="password" required="true" /></label><br>
+  <input type="submit" value="Signup">
+</form>
+@if(flashMessages.has('errors'))
+  <h2>We can't create your account!</h2>
+  <ul>
+    @each((error, forField) in flashMessages.get('errors'))
+      <li>{{ forField }}: {{ (error) }}</li>
+    @endeach
+  </ul>
+@end
