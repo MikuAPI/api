@@ -28,7 +28,6 @@ Check it out by yourself at https://miku-for.us/
 
 - [AdonisJS v5](https://adonisjs.com) for our backend/frontend.
 - [TailwindCSS v2](https://tailwindcss.com/) for our CSS.
-database.
 - [PostgreSQL](https://www.postgresql.org/) for our database.
 - [Yarn](https://yarnpkg.com) for our package manager.
 
