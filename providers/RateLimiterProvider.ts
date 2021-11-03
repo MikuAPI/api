@@ -22,20 +22,19 @@ import Config from '@ioc:Adonis/Core/Config'
 |
 */
 export default class RateLimiterProvider {
-  constructor (protected app: ApplicationContract) {
-  }
+  constructor(protected app: ApplicationContract) {}
 
-  public register () {
+  public register() {
     this.app.container.singleton('Security/RateLimiter', () => {
       return new RateLimiterMemory({
         points: Config.get('ratelimiter.points'),
         duration: Config.get('ratelimiter.duration'),
-        blockDuration: Config.get('ratelimiter.blockDuration')
+        blockDuration: Config.get('ratelimiter.blockDuration'),
       })
     })
   }
 
-  public async shutdown () {
+  public async shutdown() {
     // Cleanup, since app is going down
   }
 }

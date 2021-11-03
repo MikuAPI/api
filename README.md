@@ -56,11 +56,27 @@ This project is proudly ran by [AdonisJS v5](https://adonisjs.com). Consider rea
 If you're using PM2 for running MikuAPI, you'll require PostgreSQL to work correcty, or manually edit `ecosystem.config.js`.
 In development, the DB will be `mikuapi_dev`, in production, the DB will be `mikuapi`.
 
+- Support for WindiCSS
+
+We use WindiCSS for creating the frontend style. If you want to setup the autocompletion on your side, you need to do the following:
+
+1. Install WindiCSS Intellisense extension: https://windicss.org/editors/vscode.html
+2. Open commands, and use the command `Preferences: Open Settings (JSON)`, it will open a JSON file, it represent your settings.
+3. At the bottom of this file, add the following lines to your JSON:
+
+```json
+"windicss.includeLanguages": {
+  "edge": "html"
+}
+```
+
+You should now be set!
+
 ## Author
 
 🔨 **Predeactor**
 
-*When I installed the app for production for first time, the DB was SQLite3 in the /tmp folder.*
+_When I installed the app for production for first time, the DB was SQLite3 in the /tmp folder._
 
 - Website: https://predeactor.net
 - Twitter: [@Predeactor1](https://twitter.com/Predeactor1)

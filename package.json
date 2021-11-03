@@ -49,6 +49,7 @@
     "@adonisjs/session": "^6.0.0",
     "@adonisjs/shield": "^7.0.0",
     "@adonisjs/view": "^6.0.0",
+    "axios": "^0.24.0",
     "i": "^0.3.6",
     "luxon": "^2.0.2",
     "pg": "^8.7.1",

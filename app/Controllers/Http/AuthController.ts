@@ -11,7 +11,18 @@ export default class LoginController {
   /**
    * Try to authenticate an user.
    */
-  public async authenticate({ request, auth }: HttpContextContract) {
+  public async authenticate({ request, auth, response }: HttpContextContract) {
     await auth.use('web').attempt(request.input('email'), request.input('password'))
+    response.redirect('/')
+  }
+
+  /**
+   * Logout an user.
+   */
+  public async logout({ auth, response }: HttpContextContract) {
+    if (auth.isAuthenticated) {
+      await auth.use('web').logout()
+      return response.redirect('/')
+    }
   }
 }

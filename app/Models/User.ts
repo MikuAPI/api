@@ -3,6 +3,9 @@ import Hash from '@ioc:Adonis/Core/Hash'
 import Drive from '@ioc:Adonis/Core/Drive'
 import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
 
+const rolesType = ['OWNER', 'ADMIN', 'MANAGER', 'USER'] as const
+const statusType = ['PENDING', 'ACTIVE', 'SUSPENDED', 'DELETION_REQUESTED'] as const
+
 export default class User extends BaseModel {
   @column({ isPrimary: true })
   public id: number
@@ -23,10 +26,10 @@ export default class User extends BaseModel {
   public rememberMeToken?: string
 
   @column()
-  public role: ['OWNER', 'ADMIN', 'MANAGER', 'USER']
+  public role: typeof rolesType[number]
 
   @column()
-  public status: ['PENDING', 'ACTIVE', 'SUSPENDED', 'DELETION_REQUESTED']
+  public status: typeof statusType[number]
 
   @column()
   public suspendingReason: string
