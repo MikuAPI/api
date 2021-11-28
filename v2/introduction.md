@@ -1,3 +1,7 @@
+---
+coverY: 0
+---
+
 # Introduction to v2
 
 {% hint style="info" %}
