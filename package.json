@@ -71,5 +71,11 @@
     "reflect-metadata": "^0.1.13",
     "source-map-resolve": "^0.6.0",
     "source-map-support": "^0.5.21"
+  },
+  "resolutions": {
+    "ansi-regex": "^5.0.1",
+    "json-schema": "^0.4.0",
+    "tar": "^4.4.18",
+    "glob-parent": "^5.1.2"
   }
 }

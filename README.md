@@ -1,6 +1,9 @@
 <h1 align="center">MikuAPI v3 💙</h1>
 <p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-2.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FMikuAPI%2Fapi?ref=badge_shield">
+    <img alt="FOSSA status" src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FMikuAPI%2Fapi.svg?type=shield" />
+  </a>
   <a href="https://twitter.com/Predeactor1" target="_blank">
     <img alt="Twitter: Predeactor1" src="https://img.shields.io/twitter/follow/Predeactor1.svg?style=social" />
   </a>
@@ -77,13 +80,16 @@ You should now be set!
 
 🔨 **Predeactor**
 
-_When I installed the app for production for first time, the DB was SQLite3 in the /tmp folder._
-
 - Website: https://predeactor.net
 - Twitter: [@Predeactor1](https://twitter.com/Predeactor1)
 - Github: [@Predeactor](https://github.com/Predeactor)
 - Discord: [Capt. Pred#0495](https://discord.com/users/669223041322057769) (Come find me at my [server](https://discord.gg/aPVupKAxxP)!)
 
+## License
+
+Project licensed under the GPLv3!
+
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FMikuAPI%2Fapi?ref=badge_small" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FMikuAPI%2Fapi.svg?type=small"/></a>
 ### Show your support
 
 This project is not supported by anyone and is pretty personal, I enjoy making it just because I wanted one. You're free to ⭐ star this project to show me you enjoy it! You can also donate to me using Patreon.
