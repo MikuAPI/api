@@ -25,6 +25,8 @@ Check it out by yourself at https://miku-for.us/
 ### 🏠 [Homepage](https://miku-for.us) / ✨ [Discord Server](https://discord.gg/puur8kPUH3)
 
 ## Technologies
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMikuAPI%2Fapi.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FMikuAPI%2Fapi?ref=badge_shield)
+
 
 - [AdonisJS v5](https://adonisjs.com) for our backend/frontend.
 - [TailwindCSS v2](https://tailwindcss.com/) for our CSS.
@@ -75,3 +77,7 @@ This project is not supported by anyone and is pretty personal, I enjoy making i
 <a href="https://www.patreon.com/predeactor">
   <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="120">
 </a>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMikuAPI%2Fapi.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMikuAPI%2Fapi?ref=badge_large)
