@@ -16,4 +16,9 @@ import { Ignitor } from '@adonisjs/core/build/standalone'
 
 sourceMapSupport.install({ handleUncaughtExceptions: false })
 
-new Ignitor(__dirname).httpServer().start()
+const server = new Ignitor(__dirname).httpServer()
+server.start()
+
+process.on('SIGINT', () => {
+  server.kill(10)
+})

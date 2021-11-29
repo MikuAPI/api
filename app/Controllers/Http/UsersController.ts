@@ -1,8 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import UserCreateValidator from 'App/Validators/UserCreateValidator'
-import Mail from '@ioc:Adonis/Addons/Mail'
-import Route from '@ioc:Adonis/Core/Route'
 import Logger from '@ioc:Adonis/Core/Logger'
 
 export default class UsersController {
@@ -12,13 +10,13 @@ export default class UsersController {
    *
    * An user will be logged in.
    */
-  private async hasPermissionToDeleteUser({ auth }: HttpContextContract, requestingUser: User) {
-    const user = await auth.authenticate()
-    if (user.role === 'ADMIN') {
-      return true
-    }
-    return requestingUser.id === user.id
-  }
+  // private async hasPermissionToDeleteUser({ auth }: HttpContextContract, requestingUser: User) {
+  //   const user = await auth.authenticate()
+  //   if (user.role === 'ADMIN') {
+  //     return true
+  //   }
+  //   return requestingUser.id === user.id
+  // }
 
   /**
    * Get an user from their ID.
@@ -30,13 +28,6 @@ export default class UsersController {
     } catch (error) {
       response.notFound('User not found')
     }
-  }
-
-  /**
-   * Show the page to create an user.
-   */
-  public async signupPage({ view }: HttpContextContract) {
-    return await view.render('pages/signup')
   }
 
   /**
@@ -53,26 +44,6 @@ export default class UsersController {
       case 'json':
         return response.ok(user.toJSON())
     }
-  }
-
-  /**
-   * Send an email to the person requesting deletion.
-   *
-   * User will be logged in.
-   */
-  public async requestUserDeletion({ auth, response }: HttpContextContract) {
-    const user = await auth.authenticate()
-    const signedDeletionUrl = Route.builder()
-      .qs({ email: user.email })
-      .makeSigned('UsersController.deleteUser', { expiresIn: '72h' })
-    response.redirect(signedDeletionUrl)
-    return await Mail.preview((message) => {
-      message
-        .from('admin@miku-for.us')
-        .to('predeactor0@gmail.com')
-        .subject('MikuAPI Account Deletion Request')
-        .htmlView('email/deletion_request', { url: signedDeletionUrl, name: user.name })
-    })
   }
 
   /**

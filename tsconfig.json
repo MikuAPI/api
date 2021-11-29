@@ -20,7 +20,8 @@
       "@adonisjs/shield",
       "@adonisjs/auth",
       "@adonisjs/lucid",
-      "@adonisjs/mail"
+      "@adonisjs/mail",
+      "@adonisjs/attachment-lite"
     ]
   }
 }

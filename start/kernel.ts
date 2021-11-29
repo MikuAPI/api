@@ -22,7 +22,9 @@ import Server from '@ioc:Adonis/Core/Server'
 */
 Server.middleware.register([
   () => import('@ioc:Adonis/Core/BodyParser'),
-  () => import('App/Middleware/Ratelimiter'),
+  () => import('App/Middleware/Ratelimiter'), // The ratelimiter.
+  () => import('App/Middleware/SilentAuth'), // Silent authentication, to fill "ctx.auth.user"
+  () => import('App/Middleware/IpBlacklist'), // A way to block certain IPs, if needed.
 ])
 
 /*
@@ -45,4 +47,5 @@ Server.middleware.registerNamed({
   auth: () => import('App/Middleware/Auth'),
   guest: () => import('App/Middleware/Guest'),
   requireValidSignature: () => import('App/Middleware/RequireValidSignature'),
+  isAdmin: () => import('App/Middleware/IsAdmin'),
 })

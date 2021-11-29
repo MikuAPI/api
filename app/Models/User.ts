@@ -1,10 +1,11 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import Drive from '@ioc:Adonis/Core/Drive'
-import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import Image from 'App/Models/Image'
+import { attachment, AttachmentContract } from '@ioc:Adonis/Addons/AttachmentLite'
+import { column, beforeSave, BaseModel, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 
 const rolesType = ['OWNER', 'ADMIN', 'MANAGER', 'USER'] as const
-const statusType = ['PENDING', 'ACTIVE', 'SUSPENDED', 'DELETION_REQUESTED'] as const
+const statusType = ['PENDING', 'ACTIVE', 'SUSPENDED'] as const
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -13,8 +14,8 @@ export default class User extends BaseModel {
   @column()
   public name: string
 
-  @column()
-  public avatar: string
+  @attachment()
+  public avatar: AttachmentContract
 
   @column()
   public email: string
@@ -37,6 +38,9 @@ export default class User extends BaseModel {
   @column()
   public suspendingAuthor: number
 
+  @hasMany(() => Image)
+  public postedImages: HasMany<typeof Image>
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
@@ -47,13 +51,6 @@ export default class User extends BaseModel {
   public static async hashPassword(user: User) {
     if (user.$dirty.password) {
       user.password = await Hash.make(user.password)
-    }
-  }
-
-  @beforeSave()
-  public static async cleanupAvatar(user: User) {
-    if (user.$dirty.avatarFilename && user.$original.avatarFilename) {
-      await Drive.delete(user.$original.avatarFilename)
     }
   }
 }

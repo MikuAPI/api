@@ -1,6 +1,9 @@
 <h1>Login</h1>
-<form action="{{ route('AuthController.authenticate') }}" method="POST">
-  <label>Email: <input type="email" name="email" required="true" /></label><br>
+@if(flashMessages)
+  {{ inspect(flashMessages.get('errors')) }}
+@endif
+<form action="{{ route('AuthController.login') }}" method="POST">
+  <label>Email or username: <input type="text" name="id" required="true" /></label><br>
   <label>Password: <input type="password" name="password" required="true" /></label><br>
   <input type="submit" value="Login">
 </form>

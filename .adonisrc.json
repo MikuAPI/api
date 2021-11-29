@@ -24,7 +24,8 @@
     "@adonisjs/auth",
     "@adonisjs/lucid",
     "@adonisjs/mail",
-    "./providers/RateLimiterProvider"
+    "./providers/RateLimiterProvider",
+    "@adonisjs/attachment-lite"
   ],
   "metaFiles": [
     {

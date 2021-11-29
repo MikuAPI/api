@@ -19,14 +19,16 @@
 */
 import Route from '@ioc:Adonis/Core/Route'
 import './userroute'
+import './api/v1'
+import './api/v2'
+import './api/v3'
+import './auth'
 
 Route.get('/', async ({ view }) => {
-  return await view.render('welcome')
+  return await view.render('pages/index')
 })
 Route.get('/endpoints', async ({ response }) => {
   response.ok(Route.toJSON())
 })
 Route.get('/login', 'AuthController.loginPage').middleware('guest')
-Route.get('/signup', 'UsersController.signupPage').middleware('guest')
-
-Route.get('/test', 'UsersController.requestDeletion')
+Route.get('/signup', 'AuthController.signupPage').middleware('guest')

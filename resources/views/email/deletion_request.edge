@@ -1,23 +1,39 @@
-<h1>MikuAPI Deletion Request for {{ name }}</h1>
-
-<div class="body">
-
-  <div class="info">
-    <h2>Hold up! Before deleting your account:</h2>
-    <p>Remember, all your data will be completely erased from our service, which mean <b>WE WON'T BE ABLE TO RECOVER</b> your data. Including:</p>
-    <ul>
-      <li>Your collections</li>
-      <li>Your favorites</li>
-      <li>Your account's data</li>
-      <li>Your tokens (All generated tokens will be invalid and no longer usable)</li>
-    </ul>
-  </div>
-
-  <div class="confirm">
-    <h2>Confirmation</h2>
-    <p>
-      You have asked to delete your account from the service. Before we delete your account, we need you to click on <a href={{ url }}>this link</a> to confirm your request.
-    </p>
-  </div>
-
-</div>
+<mjml>
+  <mj-body>
+    <mj-section background-color='#6dc5ed'>
+      <mj-column>
+        <mj-image src="https://i.imgur.com/HNp0RbV_d.webp" width="50px" align="center" padding="0px"></mj-image>
+        <mj-navbar base-url='https://miku-for.us'>
+          <mj-navbar-link href='/' text-transform="none">MikuAPI</mj-navbar-link>
+        </mj-navbar>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#ffffff">
+      <mj-column>
+        <mj-text>
+          <h1>
+            Hi there! We received your account deletion request!
+          </h1>
+          <p>
+            Thank for trying out our API, it's sad to see you go, and there's nothing wrong about this! However, I need to tell you some things before you go ahead...
+          </p>
+          <div>
+            <p>Remember, all your data will be completely erased from our service, which mean <b>WE WON'T BE ABLE TO RECOVER</b> your data after you've clicked the link below. This include:
+            </p>
+            <ul>
+              <li>Your collections</li>
+              <li>Your favorites</li>
+              <li>Your account's data</li>
+              <li>Your tokens (All generated tokens will be invalid and no longer be usable)</li>
+            </ul>
+          </div>
+          <div>
+            <p>
+              Before we delete your account, we need you to click on <a href={{ url }}>this link</a> to confirm your request. After that, your account will be erased.
+            </p>
+          </div>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

@@ -26,12 +26,24 @@
     <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+
+    {{-- Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+
     {{-- Compiled assets --}}
     @entryPointStyles('app')
     @entryPointScripts('app')
+
+    @!section('head')
   </head>
 
   <body>
+
+    <div>
+      @!section('body')
+    </div>
 
   </body>
 </html>
