@@ -30,10 +30,10 @@ When connected, you are able to create "collections", which allows you to add im
 
 ![The look of v2](../.gitbook/assets/T7T85KX\[1].png)
 
-Images were provided by Predeactor.
+Images will be provided by Predeactor.
 
-The favicon was realized by Miss\_TeaRex.
+The favicon will be realized by Miss\_TeaRex.
 
-The website was hosted by Predeactor, at [https://miku-for.us](https://miku-for.us).
+The website will be hosted by Predeactor, at [https://miku-for.us](https://miku-for.us).
 
-The project is a work in progress, available at [https://github.com/MikuAPI/api](https://github.com/MikuAPI/api), and was made using TypeScript.
+The project is a work in progress, code being available at [https://github.com/MikuAPI/api](https://github.com/MikuAPI/api), and realized using TypeScript.
