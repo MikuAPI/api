@@ -11,7 +11,7 @@ export default class IsAdmin {
         return response.forbidden()
       }
     } else {
-     return response.forbidden()
+      return response.forbidden()
     }
   }
 }

@@ -24,7 +24,6 @@ Server.middleware.register([
   () => import('@ioc:Adonis/Core/BodyParser'),
   () => import('App/Middleware/Ratelimiter'), // The ratelimiter.
   () => import('App/Middleware/SilentAuth'), // Silent authentication, to fill "ctx.auth.user"
-  () => import('App/Middleware/IpBlacklist'), // A way to block certain IPs, if needed.
 ])
 
 /*

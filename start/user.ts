@@ -13,6 +13,9 @@ Route.group(() => {
     return 'Work in progress.'
   })
   Route.post('/create', 'UsersController.requestUserCreation').middleware('guest')
+  Route.post('/verify', 'UsersController.verifyUser')
   Route.post('/requestdeletion', 'DeletionRequestsController.requestDeletion').middleware('auth')
-  Route.get('/delete', 'DeletionRequestsController.deleteAccount').middleware(['auth', 'requireValidSignature'])
+  Route.get('/delete', 'DeletionRequestsController.deleteAccount').middleware([
+    'requireValidSignature',
+  ])
 }).prefix('/user')

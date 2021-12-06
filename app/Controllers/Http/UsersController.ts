@@ -51,7 +51,7 @@ export default class UsersController {
    *
    * The URl's signature will be verified.
    */
-  public async validateUser({ response, request, auth }: HttpContextContract) {
+  public async verifyUser({ response, request, auth }: HttpContextContract) {
     const qs = request.qs()
 
     try {
@@ -64,16 +64,16 @@ export default class UsersController {
             await auth.login(user)
             return response.redirect('/user/login')
           case 'json':
-            return response.ok({
+            return response.accepted({
               message: 'User validated successfully',
               user: user.toJSON(),
             })
         }
       } else {
-        return response.forbidden('User is not pending for validation')
+        return response.forbidden({ error: 'User is not pending for validation', code: 409 })
       }
     } catch {
-      return response.notFound('User not found')
+      return response.notFound({ error: 'User not found', code: 404 })
     }
   }
 

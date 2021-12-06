@@ -7,15 +7,22 @@ export default class Image extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @belongsTo(() => User)
-  public postAuthor: BelongsTo<typeof User>
+  @column()
+  public userId: number
 
-  @attachment()
+  @attachment({ preComputeUrl: true })
   public image: AttachmentContract
 
-  @column() // The author of the image, the artist
+  /**
+   * This is the image's author, not the person who posted the image to the API.
+   */
+  @column()
   public imageAuthor: string
 
+  /**
+   * Where the image is coming from? The URL should redirect to the same image, and posted by
+   * the author of the image (Twitter, Pixiv, DeviantArt, etc).
+   */
   @column()
   public imageSource: string
 
@@ -30,4 +37,10 @@ export default class Image extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  /**
+   * Every image has been posted by an user.
+   */
+  @belongsTo(() => User)
+  public author: BelongsTo<typeof User>
 }

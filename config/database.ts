@@ -39,6 +39,12 @@ const databaseConfig: DatabaseConfig = {
       connection: {
         filename: Application.tmpPath('db.sqlite3'),
       },
+      pool: {
+        // To ensure foreign key constraints will be enforced
+        afterCreate: (conn, cb) => {
+          conn.run('PRAGMA foreign_keys = ON', cb)
+        },
+      },
       migrations: {
         naturalSort: true,
       },
@@ -70,7 +76,7 @@ const databaseConfig: DatabaseConfig = {
       migrations: {
         naturalSort: true,
       },
-      healthCheck: false,
+      healthCheck: true,
       debug: false,
     },
   },

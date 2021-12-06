@@ -15,7 +15,7 @@ export default class User extends BaseModel {
   public name: string
 
   @attachment()
-  public avatar: AttachmentContract
+  public avatar: AttachmentContract | null
 
   @column()
   public email: string
@@ -33,10 +33,10 @@ export default class User extends BaseModel {
   public status: typeof statusType[number]
 
   @column()
-  public suspendingReason: string
+  public suspendingReason: string | null
 
   @column()
-  public suspendingAuthor: number
+  public suspendingAuthor: number | null
 
   @hasMany(() => Image)
   public postedImages: HasMany<typeof Image>

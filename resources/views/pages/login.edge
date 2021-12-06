@@ -1,9 +1,14 @@
 <h1>Login</h1>
-@if(flashMessages)
-  {{ inspect(flashMessages.get('errors')) }}
-@endif
 <form action="{{ route('AuthController.login') }}" method="POST">
-  <label>Email or username: <input type="text" name="id" required="true" /></label><br>
+  <label>Email/Username: <input type="text" name="id" required="true" /></label><br>
+  @if(flashMessages.has('auth.errors.uid'))
+    @if(flashMessages.get('auth.errors.uid') == 'Invalid login id')
+      <p>Invalid email/username</p>
+    @endif
+  @endif
   <label>Password: <input type="password" name="password" required="true" /></label><br>
+  @if(flashMessages.has('auth.errors.password'))
+    <p>{{ flashMessages.get('auth.errors.password') }}</p>
+  @endif
   <input type="submit" value="Login">
 </form>

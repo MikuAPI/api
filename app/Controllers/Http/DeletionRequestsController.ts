@@ -1,6 +1,8 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Mail from '@ioc:Adonis/Addons/Mail'
 import Route from '@ioc:Adonis/Core/Route'
+import User from 'App/Models/User'
+import Logger from '@ioc:Adonis/Core/Logger'
 
 /**
  * This controller's purpose is to easily control account's deletion requests & logic.
@@ -12,23 +14,48 @@ export default class DeletionRequestsController {
    *
    * User will be logged in.
    */
-  public async requestDeletion({ auth, request }: HttpContextContract) {
+  public async requestDeletion({ auth, request, response }: HttpContextContract) {
     const user = await auth.authenticate()
     const signedDeletionUrl = Route.builder()
       .qs({ email: user.email })
       .prefixUrl(`${request.protocol()}://${request.host()}`)
       .makeSigned('DeletionRequestsController.deleteAccount', { expiresIn: '48h' })
 
-    return await Mail.preview((message) => {
-      message
-        .from('admin@miku-for.us')
-        .to('predeactor0@gmail.com')
-        .subject('MikuAPI Account Deletion Request')
-        .htmlView('email/deletion_request', { url: signedDeletionUrl, name: user.name })
-    })
+    /**
+     * TODO: Change this function to return a real email. This is just for testing purposes
+     * at the moment.
+     */
+    response.redirect(
+      (
+        await Mail.preview((message) => {
+          message
+            .from('admin@miku-for.us')
+            .to('predeactor0@gmail.com')
+            .subject('MikuAPI Account Deletion Request')
+            .htmlView('email/deletion_request', { url: signedDeletionUrl, name: user.name })
+        })
+      ).url
+    )
   }
 
-  public async deleteAccount({}: HttpContextContract) {
-    return 'Account deleted.'
+  public async deleteAccount({ request, response }: HttpContextContract) {
+    const email = request.qs()['email']
+    try {
+      const user = await User.findByOrFail('email', email)
+      /**
+       * First of all, images in Drive are not deleted automatically when the user is deleted.
+       * (Compared to deleting the image itself), so we need to gather all images the user posted
+       * before.
+       */
+      const images = await user.load('postedImages').then(() => user.postedImages)
+      Logger.info(`Deleting ${images.length} image(s), reason: account deletion request.`)
+      for (const image of images) {
+        await image.delete() // Deletion now is handled by Drive automatically.
+      }
+      await user.delete()
+      return response.accepted({ message: 'Account deleted', code: 200 })
+    } catch (notFound) {
+      return response.notFound({ message: 'User not found', code: 404, error: notFound })
+    }
   }
 }

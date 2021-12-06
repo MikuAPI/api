@@ -16,6 +16,9 @@
       <form action="{{ route('AuthController.loginPage') }}", method="GET">
         <input type="submit" value="Connect">
       </form>
+      <form action="{{ route('AuthController.signupPage') }}" method="GET">
+        <input type="submit" value="Create an account">
+      </form>
     @endif
   </div>
   @if(connected)
@@ -29,6 +32,12 @@
       <h1>Logout from {{ auth.user.name }}</h1>
         <form action="{{ route('AuthController.logout') }}" method="POST">
           <input type="submit" value="Logout">
+        </form>
+    </div>
+    <div>
+      <h1>Add an image</h1>
+        <form action="{{ route('PagesController.newImage') }}" method="GET">
+          <input type="submit" value="Go to">
         </form>
     </div>
   @endif

@@ -1,0 +1,15 @@
+<h1>New Image</h1>
+<form action="{{ route('v3/ImagesController.store') }}" method="POST" enctype="multipart/form-data">
+  <label>Your Image: <input type="file" name="image" required="true" /></label><br>
+  <label>Image Author: <input type="text" name="author" required="true" /></label><br>
+  <label>Image Source: <input type="text" name="source" required="true" /></label><br>
+  <input type="submit" value="Send Image">
+</form>
+@if(flashMessages.has('errors'))
+  <h2>We can't add your image</h2>
+  <ul>
+    @each((error, forField) in flashMessages.get('errors'))
+      <li>{{ forField }}: {{ (error) }}</li>
+    @endeach
+  </ul>
+@end

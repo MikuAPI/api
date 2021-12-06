@@ -19,7 +19,15 @@ export default class Ratelimiter {
       })
       .catch((rateLimiterResponse) => {
         this.applyHeaders(response, rateLimiterResponse)
-        return response.tooManyRequests('Ratelimit reached')
+        switch (request.accepts(['html', 'json'])) {
+          case 'html':
+            // TODO: Create a page for ratelimits.
+            return response.internalServerError({ error: 'Work in progress', code: 500 })
+          case 'json':
+            return response.tooManyRequests({ error: 'Too many request', code: 429 })
+          default:
+            return response.tooManyRequests('Ratelimit reached')
+        }
       }).catch
     await next()
   }

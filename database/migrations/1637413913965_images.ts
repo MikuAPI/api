@@ -7,10 +7,10 @@ export default class Images extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
 
-      table.string('post_author_id').notNullable().references('users.id')
-      table.json('image')
+      table.integer('user_id').notNullable().references('users.id').onDelete('CASCADE')
+      table.json('image').notNullable()
 
-      table.string('image_author').notNullable() // To not confuse anyone, this is the person who made the image, not posting it
+      table.string('image_author').notNullable() // To not confuse anyone, this is the person who made the image, not posted it
       table.string('image_source').notNullable().unique()
 
       table.integer('likes').defaultTo(0).notNullable()
