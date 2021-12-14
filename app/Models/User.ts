@@ -53,4 +53,10 @@ export default class User extends BaseModel {
       user.password = await Hash.make(user.password)
     }
   }
+
+  public async suspendUser(author: this, reason?: string) {
+    this.status = 'SUSPENDED'
+    this.suspendingAuthor = author.id
+    this.suspendingReason = reason ? reason : null
+  }
 }

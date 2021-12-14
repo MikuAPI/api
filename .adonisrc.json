@@ -5,7 +5,8 @@
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands",
     "@adonisjs/lucid/build/commands",
-    "@adonisjs/mail/build/commands"
+    "@adonisjs/mail/build/commands",
+    "@adonisjs/bouncer/build/commands"
   ],
   "exceptionHandlerNamespace": "App/Exceptions/Handler",
   "aliases": {
@@ -14,7 +15,7 @@
     "Database": "database",
     "Contracts": "contracts"
   },
-  "preloads": ["./start/routes", "./start/kernel"],
+  "preloads": ["./start/routes", "./start/kernel", "./start/bouncer"],
   "providers": [
     "./providers/AppProvider",
     "@adonisjs/core",
@@ -25,7 +26,8 @@
     "@adonisjs/lucid",
     "@adonisjs/mail",
     "./providers/RateLimiterProvider",
-    "@adonisjs/attachment-lite"
+    "@adonisjs/attachment-lite",
+    "@adonisjs/bouncer"
   ],
   "metaFiles": [
     {

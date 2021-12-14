@@ -1,7 +1,12 @@
+/**
+ * This validator has been created for being sure we have the email but
+ * also to have correct typehinting.
+ */
+
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class ImageCreateValidator {
+export default class UserDeleteValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   /*
@@ -24,15 +29,7 @@ export default class ImageCreateValidator {
    *    ```
    */
   public schema = schema.create({
-    image: schema.file({
-      extnames: ['jpg', 'jpeg', 'png', 'gif'],
-      size: '8mb',
-    }),
-    author: schema.string(),
-    source: schema.string({}, [
-      rules.url({ ensureProtocol: true, protocols: ['http', 'https'], stripWWW: true }),
-      rules.unique({ table: 'images', column: 'image_source' }),
-    ]),
+    email: schema.string({}, [rules.email({ sanitize: true })]),
   })
 
   /**
@@ -47,10 +44,7 @@ export default class ImageCreateValidator {
    *
    */
   public messages = {
-    'required': '{{ field }} is required.',
-    'image.extname': 'The image must be a either a jpg, png or gif.',
-    'image.size': 'The image must be less than 8mb.',
-    'source.url': '{{ field }} must be a valid url.',
-    'source.unique': 'This image seems to already exists.',
+    'email.email': 'This is not a valid email.',
+    'email.required': 'Email is required.',
   }
 }

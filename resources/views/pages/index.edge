@@ -13,10 +13,10 @@
       <p>You are connected as: {{ auth.user.name }}</p>
     @else
       <p>You are not connected.</p>
-      <form action="{{ route('AuthController.loginPage') }}", method="GET">
+      <form action="{{ route('PagesController.loginPage') }}", method="GET">
         <input type="submit" value="Connect">
       </form>
-      <form action="{{ route('AuthController.signupPage') }}" method="GET">
+      <form action="{{ route('PagesController.signupPage') }}" method="GET">
         <input type="submit" value="Create an account">
       </form>
     @endif
@@ -41,4 +41,9 @@
         </form>
     </div>
   @endif
+
+  <h1>Image</h1>
+
+  <span class="image"></span>
+
 @endsection

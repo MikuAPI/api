@@ -33,8 +33,4 @@ export default class RateLimiterProvider {
       })
     })
   }
-
-  public async shutdown() {
-    // Cleanup, since app is going down
-  }
 }

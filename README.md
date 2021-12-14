@@ -27,7 +27,7 @@ Check it out by yourself at https://miku-for.us/
 ## Technologies
 
 - [AdonisJS v5](https://adonisjs.com) for our backend/frontend.
-- [WindiCSS](https://windicss.org) for our CSS.
+- [TailwindCSS](https://tailwindcss.com) for our CSS.
 - [PostgreSQL](https://www.postgresql.org) for our database.
 - [Yarn](https://yarnpkg.com) for our package manager.
 - [MJML](https://mjml.io) for rendering our email.
@@ -57,21 +57,23 @@ This project is proudly ran by [AdonisJS v5](https://adonisjs.com). Consider rea
 If you're using PM2 for running MikuAPI, you'll require PostgreSQL to work correcty, or manually edit `ecosystem.config.js`.
 In development, the DB will be `mikuapi_dev`, in production, the DB will be `mikuapi`.
 
-- Support for WindiCSS
+- Support for TailwindCSS
 
-We use WindiCSS for creating the frontend style. If you want to setup the autocompletion on your side, you need to do the following:
+We use TailwindCSS for creating the frontend style. If you want to setup the autocompletion on your side, you need to do the following:
 
-1. Install WindiCSS Intellisense extension: https://windicss.org/editors/vscode.html
+1. Install TailwindCSS Intellisense extension: <a href="vscode:extension/bradlc.vscode-tailwindcss">Click to install the extension</a> (More informations here: https://tailwindcss.com/docs/editor-support#intelli-sense-for-vs-code)
 2. Open commands, and use the command `Preferences: Open Settings (JSON)`, it will open a JSON file, it represent your settings.
 3. At the bottom of this file, add the following lines to your JSON:
 
 ```json
-"windicss.includeLanguages": {
+"tailwindCSS.includeLanguages": {
   "edge": "html"
 }
 ```
 
 You should now be set!
+
+Additional note: Using Just in Time mode will not work because the app would need to be restarted each time we edit the CSS, and it is not profitable. This might be due to Webpack not supporting this behavior.
 
 ## Author
 

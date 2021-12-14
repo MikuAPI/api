@@ -2,27 +2,6 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class AuthController {
   /**
-   * Show the page to log an user.
-   */
-  public async loginPage({ view }: HttpContextContract) {
-    return await view.render('pages/login')
-  }
-
-  /**
-   * Show the page to register an user.
-   */
-  public async registerPage({ view }: HttpContextContract) {
-    return await view.render('pages/register')
-  }
-
-  /**
-   * Show the page to create an user.
-   */
-  public async signupPage({ view }: HttpContextContract) {
-    return await view.render('pages/signup')
-  }
-
-  /**
    * Try to authenticate an user.
    */
   public async login({ request, auth, response }: HttpContextContract) {

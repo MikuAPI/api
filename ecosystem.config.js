@@ -13,7 +13,7 @@ module.exports = {
       },
       env_production: {
         PG_DB_NAME: 'mikuapi',
-        PORT: 8080, // TODO: Change to 8080 after being finished with testing PM2 on prod.
+        PORT: 8080,
         NODE_ENV: 'production',
       },
     },

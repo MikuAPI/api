@@ -29,5 +29,7 @@ Route.get('/endpoints', async ({ response }) => {
   response.ok(Route.toJSON())
 })
 Route.get('/newimage', 'PagesController.newImage').middleware('auth')
-Route.get('/login', 'AuthController.loginPage').middleware('guest')
-Route.get('/signup', 'AuthController.signupPage').middleware('guest')
+Route.get('/login', 'PagesController.loginPage').middleware('guest')
+Route.get('/signup', 'PagesController.signupPage').middleware('guest')
+
+Route.get('/test', 'TestingsController.index')

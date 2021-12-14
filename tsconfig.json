@@ -21,7 +21,8 @@
       "@adonisjs/auth",
       "@adonisjs/lucid",
       "@adonisjs/mail",
-      "@adonisjs/attachment-lite"
+      "@adonisjs/attachment-lite",
+      "@adonisjs/bouncer"
     ]
   }
 }

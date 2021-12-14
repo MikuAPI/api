@@ -1,9 +1,9 @@
 import '../css/app.css'
-const axios = require('axios').default
+import axios from 'axios'
 
-function getImage() {
-  const data = axios.get('/api/v2/random')
-  return data.url
+async function getData() {
+  const response = await axios.get('/api/v3/random')
+  return response.data
 }
 
-getImage()
+getData().then((data) => console.log(data))

@@ -18,7 +18,6 @@ export default class UsersSchema extends BaseSchema {
       /**
        * API related
        */
-      table.integer('posted_images').nullable().unsigned()
       table.enum('role', ['OWNER', 'ADMIN', 'MANAGER', 'USER']).notNullable().defaultTo('USER')
 
       /**
@@ -26,7 +25,12 @@ export default class UsersSchema extends BaseSchema {
        */
       table.enum('status', ['PENDING', 'ACTIVE', 'SUSPENDED']).defaultTo('PENDING').notNullable()
       table.string('suspending_reason').nullable()
-      table.integer('suspending_author').nullable().references('id').inTable('users').onDelete('')
+      table
+        .integer('suspending_author')
+        .nullable()
+        .references('id')
+        .inTable('users')
+        .onDelete('NO ACTION')
 
       /**
        * Uses timestampz for PostgreSQL and DATETIME2 for MSSQL
