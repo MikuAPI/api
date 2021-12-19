@@ -28,7 +28,8 @@
     "./providers/RateLimiterProvider",
     "@adonisjs/attachment-lite",
     "@adonisjs/bouncer",
-    "./providers/ResponseProvider"
+    "./providers/ResponseProvider",
+    "./providers/Up/Provider"
   ],
   "metaFiles": [
     {

@@ -37,12 +37,28 @@ export default class ExceptionHandler extends HttpExceptionHandler {
      * What it does is that in case we have made a request to the API directly
      * (A route that contain "api"), the error will be returned in JSON format.
      */
+
+    /**
+     * This part is for Unpoly, see https://github.com/adonisjs-community/polls-app/blob/main/app/Exceptions/Handler.ts
+     * Commit: dcd2a01
+     */
+    if (error.code === 'E_VALIDATION_FAILURE') {
+      ctx.up.setTarget(ctx.up.getFailContext())
+    }
+
+    if (!error.status || this.expandedStatusPages[error.status]) {
+      ctx.up.fullReload()
+    }
+
+    /**
+     * Determine in which format the error should be returned.
+     * JSON if this is a direct API call, handled by the default behavior if not.
+     */
     try {
       if (ctx.request.url().includes('api')) {
         const apiException = new ApiException(error.message, error.status, error.code)
         return await apiException.handle(ctx)
       }
-
       return await super.handle(error, ctx)
     } catch (error) {
       /**
