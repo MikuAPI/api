@@ -30,7 +30,7 @@ Check it out by yourself at https://miku-for.us/
 - [TailwindCSS](https://tailwindcss.com) for our CSS.
 - [PostgreSQL](https://www.postgresql.org) for our database.
 - [Yarn](https://yarnpkg.com) for our package manager.
-- [MJML](https://mjml.io) for rendering our email.
+- [MJML](https://mjml.io) for rendering our email & [Amazon SES](https://aws.amazon.com/) for sending them.
 
 ## Install
 

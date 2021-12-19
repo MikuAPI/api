@@ -25,7 +25,7 @@ export default class RateLimiterProvider {
   constructor(protected app: ApplicationContract) {}
 
   public register() {
-    this.app.container.singleton('Security/RateLimiter', () => {
+    this.app.container.singleton('Adonis/Security/RateLimiter', () => {
       return new RateLimiterMemory({
         points: Config.get('ratelimiter.points'),
         duration: Config.get('ratelimiter.duration'),

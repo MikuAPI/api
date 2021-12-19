@@ -26,7 +26,10 @@ test.group('User Route Tester', () => {
       .set('Accept', 'application/json')
       .attach('image', './test/assets/image_upload_test.png')
       .field('author', 'FaySmash')
-      .field('source', 'https://www.deviantart.com/faysmash/art/Hatsune-Miku-silhouette-SVGs-PNGs-822110687')
+      .field(
+        'source',
+        'https://www.deviantart.com/faysmash/art/Hatsune-Miku-silhouette-SVGs-PNGs-822110687'
+      )
     console.log(ctx.body)
   })
 

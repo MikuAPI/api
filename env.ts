@@ -22,9 +22,9 @@ export default Env.rules({
   CACHE_VIEWS: Env.schema.boolean(),
   SESSION_DRIVER: Env.schema.string(),
   DRIVE_DISK: Env.schema.enum(['local'] as const),
+  DRIVE_PATH: Env.schema.string(),
   NODE_ENV: Env.schema.enum(['development', 'production', 'testing'] as const),
-  SMTP_HOST: Env.schema.string({ format: 'host' }),
-  SMTP_PORT: Env.schema.number(),
-  SMTP_USERNAME: Env.schema.string(),
-  SMTP_PASSWORD: Env.schema.string(),
+  SES_ACCESS_KEY: Env.schema.string(),
+  SES_ACCESS_SECRET: Env.schema.string(),
+  SES_REGION: Env.schema.string(),
 })

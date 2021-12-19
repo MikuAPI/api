@@ -5,45 +5,26 @@ import Logger from '@ioc:Adonis/Core/Logger'
 
 export default class UsersController {
   /**
-   * Ensure that the requesting user (From the request) has the power to delete the
-   * account.
-   *
-   * An user will be logged in.
-   */
-  // private async hasPermissionToDeleteUser({ auth }: HttpContextContract, requestingUser: User) {
-  //   const user = await auth.authenticate()
-  //   if (user.role === 'ADMIN') {
-  //     return true
-  //   }
-  //   return requestingUser.id === user.id
-  // }
-
-  /**
    * Get an user from their ID.
    */
-  public async getUserInformation({ request, response }: HttpContextContract) {
-    try {
-      const user = await User.findOrFail(request.param('id'))
-      return user.toJSON()
-    } catch (error) {
-      response.notFound('User not found')
-    }
+  public async show({ request, response }: HttpContextContract) {
+    const user = await User.findOrFail(request.param('id'))
+    return response.sendSuccess(user.toJSON())
+  }
+
+  public async update({ response }: HttpContextContract) {
+    return response.sendSuccess('Work in progress')
   }
 
   /**
    * Create an user and return their infos (Such as ID, etc...)
    */
-  public async requestUserCreation({ request, response }: HttpContextContract) {
+  public async store({ request, response }: HttpContextContract) {
     const userData = await request.validate(UserCreateValidator)
     const user = await User.create(userData)
     Logger.info(`New user registered! Please welcome ${user.name} (${user.email})`)
     // TODO: Redirect user to a page to tell him to check his inbox
-    switch (request.accepts(['json', 'html'])) {
-      case 'html':
-        return response.redirect('/login')
-      case 'json':
-        return response.ok(user.toJSON())
-    }
+    return response.redirect('/login')
   }
 
   /**
@@ -83,15 +64,19 @@ export default class UsersController {
    * The user will be logged in.
    * The URL's signature will be verified.
    */
-  public async deleteUser({ request, response }: HttpContextContract) {
-    const qs = request.qs()
+  public async destroy({ auth, response }: HttpContextContract) {
+    const user = await auth.authenticate()
 
-    try {
-      const user = await User.findByOrFail('email', qs['email'])
-      return { message: 'User would be deleted successfully.', user: user.toJSON() }
-      // await user.delete()
-    } catch (error) {
-      response.notFound('User not found.')
+    /**
+     * Because Drive does not handle images automatically when we delete the user account itself,
+     * we get all images and delete them one by one. This way, Drive will delete the images.
+     */
+    await user.load('postedImages') // TODO: Need to check if this work as intended
+    for (const image of user.postedImages) {
+      await image.delete()
     }
+
+    await user.delete()
+    return response.sendSuccess(null, 'User deleted successfully')
   }
 }

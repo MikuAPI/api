@@ -1,0 +1,20 @@
+@layout('layouts/master')
+
+@set('title', 'Sorry - 💙 MikuAPI v3')
+@set('description', 'Sorry to see you go!')
+
+@section('body')
+
+<div class="text-center">
+  <img src="/banner.png" alt="MikuAPI's Banner">
+
+  <h1>Thank for being an user of the MikuAPI.</h1>
+
+  <p>We still hope you enjoyed our many images of Hatsune Miku & her friends. If you have a feedback for us, feel free to create an issue at https://github.com/MikuAPI/api and give your thoughts!</p>
+  <p>You can still enjoy our images <a href={{ route('PagesController.index') }}>here</a> if you want.</p>
+  <p>Last, but not least, you can also check our source code <a href="https://github.com/MikuAPI/api">here</a> if you'd like to know a bit more about what we use.</p>
+
+  <p>Sincerely.</p>
+  <p><i>- Predeactor</i></p>
+</div>
+@endsection

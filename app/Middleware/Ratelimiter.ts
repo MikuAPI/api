@@ -1,5 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import RateLimiter from '@ioc:Security/RateLimiter'
+import RateLimiter from '@ioc:Adonis/Security/RateLimiter'
 import { ResponseContract } from '@ioc:Adonis/Core/Response'
 
 export default class Ratelimiter {

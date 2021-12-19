@@ -24,9 +24,10 @@
   @if(connected)
     <div class="delete-request">
       <h1>Delete User Test (Deletion request)</h1>
-        <form action="{{ route('DeletionRequestsController.requestDeletion') }}" method="POST">
+        <p>Delete user removed (Fix method issue, see Unpoly)</p>
+        {{--  <form action="{{ route('UsersController.destroy') }}" method="POST">
           <input type="submit" value="Submit">
-        </form>
+        </form>  --}}
     </div>
     <div class="logout">
       <h1>Logout from {{ auth.user.name }}</h1>
@@ -44,6 +45,8 @@
 
   <h1>Image</h1>
 
-  <span class="image"></span>
+  <span class="image">
+    <img src="{{ url }}" alt="A random Hatsune Miku image!">
+  </span>
 
 @endsection

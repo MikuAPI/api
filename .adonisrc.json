@@ -27,7 +27,8 @@
     "@adonisjs/mail",
     "./providers/RateLimiterProvider",
     "@adonisjs/attachment-lite",
-    "@adonisjs/bouncer"
+    "@adonisjs/bouncer",
+    "./providers/ResponseProvider"
   ],
   "metaFiles": [
     {

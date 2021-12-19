@@ -12,7 +12,9 @@ export default class PagesController {
    * Show the main page.
    */
   public async index({ view }: HttpContextContract) {
-    return await view.render('pages/index')
+    return await view.render('pages/index', {
+      url: 'https://www.google.com/',
+    })
   }
 
   /**
@@ -41,5 +43,12 @@ export default class PagesController {
    */
   public async newImage({ view }: HttpContextContract) {
     return await view.render('pages/new_image')
+  }
+
+  /**
+   * Show the after account deletion page (goodbye).
+   */
+  public async goodbye({ view }: HttpContextContract) {
+    return await view.render('pages/deletion_complete')
   }
 }

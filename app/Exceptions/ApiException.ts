@@ -10,11 +10,13 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 | a status code and error code for every exception.
 |
 | @example
-| new AccountNotUpdatableException('message', 500, 'E_RUNTIME_EXCEPTION')
+| new ApiException('message', 500, 'E_RUNTIME_EXCEPTION')
 |
 */
-export default class AccountNotUpdatableException extends Exception {
-  public async handle(error: this, ctx: HttpContextContract) {
-    ctx.response.status(error.status)
+export default class ApiException extends Exception {
+  public async handle(this: this, ctx: HttpContextContract) {
+    return ctx.response
+      .status(this.status)
+      .sendError(null, [this], this.message, this.status, this.code)
   }
 }

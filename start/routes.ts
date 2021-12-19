@@ -32,4 +32,5 @@ Route.get('/newimage', 'PagesController.newImage').middleware('auth')
 Route.get('/login', 'PagesController.loginPage').middleware('guest')
 Route.get('/signup', 'PagesController.signupPage').middleware('guest')
 
-Route.get('/test', 'TestingsController.index')
+Route.get('/api/test', 'TestingsController.index')
+Route.get('/goodbye', 'PagesController.goodbye')

@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ['./ressources/views/**/*.edge'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./resources/views/**/*.{edge,html}'],
   theme: {
     fontFamily: {
       sans: ['ui-sans-serif', 'system-ui'],

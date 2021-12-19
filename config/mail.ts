@@ -18,7 +18,7 @@ const mailConfig: MailConfig = {
   | a mailer
   |
   */
-  mailer: 'smtp',
+  mailer: 'ses',
 
   /*
   |--------------------------------------------------------------------------
@@ -36,21 +36,26 @@ const mailConfig: MailConfig = {
   mailers: {
     /*
     |--------------------------------------------------------------------------
-    | Smtp
+    | SES
     |--------------------------------------------------------------------------
     |
-    | Uses SMTP protocol for sending email
+    | Uses Amazon SES for sending emails. You will have to install the aws-sdk
+    | when using this driver.
+    |
+    | ```
+    | npm i aws-sdk
+    | ```
     |
     */
-    smtp: {
-      driver: 'smtp',
-      host: Env.get('SMTP_HOST'),
-      port: Env.get('SMTP_PORT'),
-      auth: {
-        user: Env.get('SMTP_USERNAME'),
-        pass: Env.get('SMTP_PASSWORD'),
-        type: 'login',
-      },
+    ses: {
+      driver: 'ses',
+      apiVersion: '2010-12-01',
+      key: Env.get('SES_ACCESS_KEY'),
+      secret: Env.get('SES_ACCESS_SECRET'),
+      region: Env.get('SES_REGION'),
+      sslEnabled: true,
+      sendingRate: 10,
+      maxConnections: 5,
     },
   },
 }
