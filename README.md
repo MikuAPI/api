@@ -31,7 +31,7 @@ MikuAPI v1 technologies are the following:
 
 The purpose of v1 was to only return a random image of Hatsune Miku by reloading the page. The page's color was grey and was listing the contributors of the API.
 
-![The original look of v1.](.gitbook/assets/image.png)
+![The original look of v1.](.gitbook/assets/v1-presentation.png)
 
 It is the first JavaScript's project made by Predeactor, the MikuAPI's maintainer.
 
