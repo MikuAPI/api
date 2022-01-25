@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: ['./resources/views/**/*.{edge,html}'],
   theme: {
@@ -7,14 +9,20 @@ module.exports = {
       mono: ['ui-monospace', 'SFMono-Regular'],
       josefin: ['Josefin Sans', 'sans-serif'],
     },
-    extend: {
-      colors: {
-        blue: {
-          light: '#B9DDE5',
-          DEFAULT: '#1F2545',
-          dark: '#0B102E',
-        },
-      },
+    colors: {
+      'deep-blue': '#0B112E',
+      'basic-blue': '#1F2545',
+      'miku-pink': '#E570B6',
+      'miku-white-blue': '#73CBD5',
+      'miku-deep-blue': '#0F2F5B',
+      'transparent': 'transparent',
+      'current': 'currentColor',
+      'black': colors.black,
+      'white': colors.white,
+      'gray': colors.gray,
+      'emerald': colors.emerald,
+      'indigo': colors.indigo,
+      'yellow': colors.yellow,
     },
   },
   variants: {

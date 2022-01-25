@@ -1,6 +1,28 @@
-<nav class="bg-blue text-white">
-  <div class="container mx-auto h-auto text-7xl">
-    <a href="{{ route('PagesController.index') }}">MikuAPI v3</a>
+@set('tabs', [
+  {
+    name: 'Home',
+    link: '/'
+  },
+  {
+    name: 'About',
+    link: '/about'
+  },
+  {
+    name: 'Contact',
+    link: '/contact'
+  }
+])
+
+<nav class="bg-deep-blue text-white">
+  <div class="max-w-7xl mx-auto h-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-auto flex-row py-5">
+      <p>MikuAPI</p>
+      <ul class="flex flex-auto flex-row justify-center">
+        @each(link in tabs)
+          <li class="px-3"><a href="{{ link.link }}">{{ link.name }}</a></li>
+        @endeach
+      </ul>
+      @include('partials/navbar_auth')
+    </div>
   </div>
 </nav>
-

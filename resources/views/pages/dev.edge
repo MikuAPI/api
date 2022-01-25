@@ -1,0 +1,50 @@
+@layout('layouts/master')
+
+@set('title', 'Dev page - MikuAPI v3')
+@set('description', 'Development page.')
+
+@set('connected', auth.isLoggedIn)
+
+@section('body')
+
+  <div class="connected">
+    {{--  We are showing if we are connected in this div  --}}
+    @if(connected)
+      <p>You are connected as: {{ auth.user.name }}</p>
+    @else
+      <p>You are not connected.</p>
+      <form action="{{ route('PagesController.loginPage') }}", method="GET">
+        <input type="submit" value="Connect">
+      </form>
+      <form action="{{ route('PagesController.signupPage') }}" method="GET">
+        <input type="submit" value="Create an account">
+      </form>
+    @endif
+  </div>
+  @if(connected)
+    <div class="delete-request">
+      <h1>Delete User Test (Deletion request)</h1>
+        <p>Delete user removed (Fix method issue, see Unpoly)</p>
+        <a href="{{ route('UsersController.destroy', {id: auth.user.id}) }}" up-follow up-method="delete">Delete</a>
+    </div>
+    <br>
+    <div class="logout">
+      <h1>Logout from {{ auth.user.name }}</h1>
+        <form action="{{ route('AuthController.logout') }}" method="POST">
+          <input type="submit" value="Logout">
+        </form>
+    </div>
+    <div>
+      <h1>Add an image</h1>
+        <form action="{{ route('PagesController.newImage') }}" method="GET">
+          <input type="submit" value="Go to">
+        </form>
+    </div>
+
+    <div>
+      <h1>Test Axios: PATCH request to /user/{{ auth.user.id }}</h1>
+        
+    </div>
+  @endif
+
+@endsection

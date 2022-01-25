@@ -12,9 +12,7 @@ export default class PagesController {
    * Show the main page.
    */
   public async index({ view }: HttpContextContract) {
-    return await view.render('pages/index', {
-      url: 'https://www.google.com/',
-    })
+    return await view.render('pages/index')
   }
 
   /**

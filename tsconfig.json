@@ -22,7 +22,8 @@
       "@adonisjs/lucid",
       "@adonisjs/mail",
       "@adonisjs/attachment-lite",
-      "@adonisjs/bouncer"
+      "@adonisjs/bouncer",
+      "@adonisjs/redis"
     ]
   }
 }

@@ -15,12 +15,6 @@ async function runMigrations() {
   })
 }
 
-async function rollbackMigrations() {
-  await node('ace', ['migration:rollback', '--batch=0'], {
-    stdio: 'inherit',
-  })
-}
-
 async function startHttpServer() {
   const { Ignitor } = await import('@adonisjs/core/build/src/Ignitor')
   process.env.PORT = String(await getPort())
@@ -33,5 +27,5 @@ async function startHttpServer() {
 configure({
   files: ['test/**/*.spec.ts'],
   before: [runMigrations, startHttpServer],
-  after: [rollbackMigrations],
+  after: [],
 })

@@ -9,9 +9,10 @@ export default class UsersSchema extends BaseSchema {
        * Fundamentals
        */
       table.increments('id').primary()
-      table.string('name', 25).notNullable()
+
+      table.string('name', 25).notNullable().unique()
       table.string('avatar').nullable()
-      table.string('email', 255).notNullable()
+      table.string('email', 255).notNullable().unique()
       table.string('password', 180).notNullable()
       table.string('remember_me_token').nullable()
 

@@ -2,7 +2,14 @@ import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import Image from 'App/Models/Image'
 import { attachment, AttachmentContract } from '@ioc:Adonis/Addons/AttachmentLite'
-import { column, beforeSave, BaseModel, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  column,
+  beforeSave,
+  beforeDelete,
+  BaseModel,
+  HasMany,
+  hasMany,
+} from '@ioc:Adonis/Lucid/Orm'
 
 const rolesType = ['OWNER', 'ADMIN', 'MANAGER', 'USER'] as const
 const statusType = ['PENDING', 'ACTIVE', 'SUSPENDED'] as const
@@ -38,7 +45,9 @@ export default class User extends BaseModel {
   @column()
   public suspendingAuthor: number | null
 
-  @hasMany(() => Image)
+  @hasMany(() => Image, {
+    serializeAs: 'posteImages',
+  })
   public postedImages: HasMany<typeof Image>
 
   @column.dateTime({ autoCreate: true })
@@ -46,6 +55,14 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @beforeDelete()
+  public static async deleteImagesFromDrive(user: User) {
+    await user.load('postedImages')
+    for (const image of user.postedImages) {
+      await image.delete()
+    }
+  }
 
   @beforeSave()
   public static async hashPassword(user: User) {

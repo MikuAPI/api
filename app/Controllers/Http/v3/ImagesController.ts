@@ -41,6 +41,6 @@ export default class ImagesController {
       return image
     })
 
-    return response.ok(image.toJSON())
+    return response.ok(image.serialize())
   }
 }

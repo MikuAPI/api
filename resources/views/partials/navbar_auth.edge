@@ -1,0 +1,10 @@
+<div>
+  @if(auth.isLoggedIn)
+    <p>Connected as {{ auth.user.name }}</p>
+  @else
+  <ul class="flex flex-row">
+    <li class="px-3"><a href="/login">Sign In</a></li>
+    <li class="px-3"><a href="/signup">Sign Up</a></li>
+  </ul>
+  @endif
+</div>
