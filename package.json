@@ -22,6 +22,7 @@
     "url": "https://www.patreon.com/predeactor"
   },
   "scripts": {
+    "db:update": "node ace migration:rollback && node ace migration:run",
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",
@@ -34,7 +35,10 @@
     "@adonisjs/assembler": "^5.0.0",
     "@symfony/webpack-encore": "^1.6.1",
     "@types/jsdom": "^16.2.13",
+    "@types/proxy-addr": "^2.0.0",
+    "@types/source-map-support": "^0.5.4",
     "@types/supertest": "^2.0.11",
+    "@vue/compiler-sfc": "^3.2.29",
     "adonis-preset-ts": "^2.1.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^7.32.0",
@@ -53,6 +57,7 @@
     "sqlite3": "^5.0.2",
     "supertest": "^6.1.6",
     "tailwindcss": "^3.0.5",
+    "ts-loader": "^9.0.0",
     "typescript": "~4.2",
     "youch": "^2.2.2",
     "youch-terminal": "^1.1.1"
@@ -64,7 +69,6 @@
     "@adonisjs/core": "^5.3.0",
     "@adonisjs/lucid": "^16.0.2",
     "@adonisjs/mail": "^7.2.4",
-    "@adonisjs/redis": "^7.1.0",
     "@adonisjs/repl": "^3.1.0",
     "@adonisjs/session": "^6.0.0",
     "@adonisjs/shield": "^7.0.0",
@@ -72,7 +76,9 @@
     "@babel/core": "^7.7.0",
     "@babel/preset-env": "^7.16.4",
     "alpinejs": "^3.7.1",
+    "axios": "^0.25.0",
     "core-js": "3",
+    "csv-parse": "^5.0.4",
     "i": "^0.3.6",
     "luxon": "^2.0.2",
     "mjml": "^4.11.0",
@@ -83,7 +89,9 @@
     "reflect-metadata": "^0.1.13",
     "source-map-resolve": "^0.6.0",
     "source-map-support": "^0.5.21",
-    "unpoly": "^2.4.1"
+    "unpoly": "^2.4.1",
+    "vue": "^3.2.29",
+    "vue-loader": "^16.7.0"
   },
   "resolutions": {
     "ansi-regex": "^5.0.1",
