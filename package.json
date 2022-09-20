@@ -1,0 +1,70 @@
+{
+  "name": "mikuapi",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node ace serve --watch",
+    "build": "node ace build --production",
+    "start": "node server.js",
+    "lint": "eslint . --ext=.ts",
+    "format": "prettier --write ."
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:adonis/typescriptApp",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error"
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "build"
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true,
+    "useTabs": false,
+    "quoteProps": "consistent",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 100
+  },
+  "devDependencies": {
+    "@adonisjs/assembler": "^5.8.1",
+    "@japa/preset-adonis": "^1.2.0",
+    "@japa/runner": "^2.2.1",
+    "adonis-preset-ts": "^2.1.0",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-adonis": "^2.1.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "pino-pretty": "^9.1.0",
+    "prettier": "^2.7.1",
+    "typescript": "~4.6",
+    "youch": "^3.2.2",
+    "youch-terminal": "^2.1.5"
+  },
+  "dependencies": {
+    "@adonisjs/attachment-lite": "^1.0.7",
+    "@adonisjs/auth": "^8.2.2",
+    "@adonisjs/core": "^5.8.0",
+    "@adonisjs/limiter": "^1.0.1",
+    "@adonisjs/lucid": "^18.1.1",
+    "@adonisjs/repl": "^3.1.0",
+    "@adonisjs/route-model-binding": "^1.0.1",
+    "luxon": "^3.0.3",
+    "pg": "^8.8.0",
+    "proxy-addr": "^2.0.7",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.21",
+    "sqlite3": "^5.1.1"
+  },
+  "packageManager": "yarn@3.2.3"
+}
