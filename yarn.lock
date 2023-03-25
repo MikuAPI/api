@@ -4656,6 +4656,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"luxon@npm:^3.2.1":
+  version: 3.3.0
+  resolution: "luxon@npm:3.3.0"
+  checksum: 50cf17a0dc155c3dcacbeae8c0b7e80db425e0ba97b9cbdf12a7fc142d841ff1ab1560919f033af46240ed44e2f70c49f76e3422524c7fc8bb8d81ca47c66187
+  languageName: node
+  linkType: hard
+
 "macroable@npm:^7.0.1":
   version: 7.0.1
   resolution: "macroable@npm:7.0.1"
@@ -4892,7 +4899,7 @@ __metadata:
     eslint-config-prettier: ^8.5.0
     eslint-plugin-adonis: ^2.1.1
     eslint-plugin-prettier: ^4.2.1
-    luxon: ^3.0.3
+    luxon: ^3.2.1
     pg: ^8.8.0
     pino-pretty: ^9.1.0
     prettier: ^2.7.1
